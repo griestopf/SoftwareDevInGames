@@ -10,22 +10,22 @@ weight = 0
 
 | Datum      | Inhalt                                                                                          |
 |------------|-------------------------------------------------------------------------------------------------|
-| Mi 19. Mrz | Veranstaltungsinfo. Installationshinweise                                                       |
-| Mi 26. Mrz | C/C++ Einführung: Hello, World. |
-| Mi 02. Apr | C/C++ Einführung: memory. Reference vs. Value Semantik. Pointer, Arrays und Strings              |
-| Mi 09. Apr | C/C++-Einführung: Std.-Libraries                                                                |
-| Mi 16. Apr | Godot-Engine Bauen                                                                              |
-| Mi 23. Apr | Game-Engine Architecture: Initialization and Game Loop                                          |
-| Mi 30. Apr | G-E-A: Scene Management: Class library of scene parts                                           |
-| Mi 07. Mai | G-E-A: Scene Management: Collections and Trees                                                  |
-| Mi 14. Mai | G-E-A: Scene Management: Collections and Trees                                                  |
-| Mi 21. Mai | G-E-A: Scene Management: Scene-Traversal                                                        |
-| Mi 28. Mai | G-E-A: Render-Engine abstraction                                                                |
-| Mi 04. Jun | G-E-A: Render-Engine abstraction                                                                |
-| Mi 11. Jun | Pfingsten                                                                                       |
-| Mi 18. Jun | G-E-A: Platform independence                                                                    |
-| Mi 25. Jun | Puffer                                                                                          |
-| Mi 02. Jul | Puffer                                                                                          |
+| Di 17. Mrz | Veranstaltungsinfo. Installationshinweise                                                       |
+| Di 24. Mrz | C/C++ Einführung: Hello, World.                                                                 |
+| Di 31. Mrz | C/C++ Einführung: memory. Reference vs. Value Semantik. Pointer, Arrays und Strings             |
+| Di 07. Apr | C/C++-Einführung: Std.-Libraries                                                                |
+| Di 14. Apr | Godot-Engine Bauen                                                                              |
+| Di 21. Apr | Game-Engine Architecture: Initialization and Game Loop                                          |
+| Di 28. Apr | G-E-A: Scene Management: Class library of scene parts                                           |
+| Di 05. Mai | G-E-A: Scene Management: Collections and Trees                                                  |
+| Di 12. Mai | G-E-A: Scene Management: Collections and Trees                                                  |
+| Di 19. Mai | G-E-A: Scene Management: Scene-Traversal                                                        |
+| Di 26. Mai | Pfingsten                                                                                       |
+| Di 02. Jun | G-E-A: Render-Engine abstraction                                                                |
+| Di 09. Jun | G-E-A: Render-Engine                                                                            |
+| Di 16. Jun | G-E-A: Platform independence                                                                    |
+| Di 23. Jun | Puffer                                                                                          |
+| Di 30. Jun | Puffer                                                                                          |
 
 
 ## Resourcen

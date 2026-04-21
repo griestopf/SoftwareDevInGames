@@ -17,6 +17,33 @@ weight = 50
     - Generate vsproj and sln files: 
     ```scons platform=windows vsproj=yes```
     - Dann Verzeichnis mit VS-Code aus der Developer-Console öffnen 
+
+- Im Godot-Source-Verzeichnis im Unterverzeichnis `.vscode` die Datei tasks.json mit folgendem Inhalt anlegen:
+
+    ```json
+    {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "type": "shell",
+                "label": "SCons: build",
+                "command": "scons",
+                "args": [
+                    "dev_build=yes",
+                    "debug_symbols=yes",
+                    "platform=windows"
+                ],
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                },
+                "problemMatcher": [],
+                "detail": "Build Godot with SCons"
+            }
+        ]
+    }
+    ```
+
 - In der Debug-Pane eine launch.json erzeugen, z. B. so:
     ```json
     {

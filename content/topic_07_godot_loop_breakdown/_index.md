@@ -72,11 +72,11 @@ Physics is fixed-step, so it can run zero, one, or multiple times per rendered f
 
 #### Processing
 
-After the physics steps, the main iteration calls [MainLoop::process(double p_time)](main/main.cpp#L5008), which calls `_process(false)` to process all nodes that have regular processing enabled. This is where the game logic updates happen for each frame.
+After the physics steps, the main iteration calls [`MainLoop::process(double p_time) ()` main/main.cpp#L5058)](https://github.com/godotengine/godot/blob/ef02314f2bd0305035ecbe907883401a393da7a7/main/main.cpp#L5058), which calls `_process(false)` to process all nodes that have regular processing enabled. This is where the game logic updates happen for each frame.
 
-Interestingly, this _process call ends up in the same [SceneTree::_process()](scene\main\scene_tree.cpp#L1239) function that is used for both physics and regular processing, but it distinguishes between them using a boolean parameter.
+Interestingly, this _process call ends up in the same [`SceneTree::_process()` (scene/main/scene_tree.cpp#L1244)](https://github.com/godotengine/godot/blob/ef02314f2bd0305035ecbe907883401a393da7a7/scene/main/scene_tree.cpp#L1244) function that is used for both physics and regular processing, but it distinguishes between them using a boolean parameter.
 
-**Assignemnt** Inspect the [SceneTree::_process()](scene\main\scene_tree.cpp#L1239) function and try to grasp how it differentiates between physics processing and regular processing. Identify the places that determine the behavior based on the boolean parameter. 
+**Assignemnt** Inspect the [`SceneTree::_process()` (scene/main/scene_tree.cpp#L1244)](https://github.com/godotengine/godot/blob/ef02314f2bd0305035ecbe907883401a393da7a7/scene/main/scene_tree.cpp#L1244) function and try to grasp how it differentiates between physics processing and regular processing. Identify the places that determine the behavior based on the boolean parameter. 
 
 
 The `_process()` function does not traverse the entire scene graph. Instead, it uses cached lists of nodes that have processing enabled. This means that only the nodes that need to be processed are visited, which can improve performance.

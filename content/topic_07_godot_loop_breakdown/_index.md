@@ -81,3 +81,24 @@ Interestingly, this _process call ends up in the same [`SceneTree::_process()` (
 
 The `_process()` function does not traverse the entire scene graph. Instead, it uses cached lists of nodes that have processing enabled. This means that only the nodes that need to be processed are visited, which can improve performance.
 
+#### Rendering
+
+Finally, the rendering phase is handled by calling [`MainLoop::render(double p_time)` (main/main.cpp#L5088)](https://github.com/godotengine/godot/blob/ef02314f2bd0305035ecbe907883401a393da7a7/main/main.cpp#L5088).
+
+The rendering phase is more complex and involves multiple steps, including culling, sorting, and drawing. In Godot 4.x, each renderable resource (like a mesh or a texture) is represented by a RID (Resource ID), and the rendering backend (like Vulkan) interacts with these RIDs directly. The scene graph nodes that represent renderable objects (like MeshInstance3D) have references to these RIDs, but the actual rendering process is driven by the RIDs and the rendering backend, not by traversing the scene graph.
+
+The rendering itself is controlled by the RenderingServer/RendererSceneCull classes. In General there are three levels how the rendering is controlled:
+
+- User-Level: The Scene Graph nodes and their ressources
+- Engine-Level: The RenderingServer and RendererSceneCull classes that manage the rendering process and interact with the rendering backend.
+Backend-Level: The actual rendering backend (like Vulkan) that executes the rendering commands based on the RIDs and the rendering state set by the engine.
+
+
+**Assignemnt** 
+- Read: https://docs.godotengine.org/en/stable/engine_details/architecture/internal_rendering_architecture.html to get a grasp how rendering works in Godot 4.x and how the scene graph nodes interact with the rendering backend through RIDs. Especially look at the [Core Rendering Classes Architecture image](https://docs.godotengine.org/en/stable/engine_details/architecture/internal_rendering_architecture.html#core-rendering-classes-architecture) to get an overview of the involved classes and their relationships.
+- Identify the classes in he above architecture image in the source code.
+- Look at how individual nodes like MeshInstance3D interact with the rendering backend using the RenderingServer class. Read the [Optimization using Servers](https://docs.godotengine.org/en/stable/tutorials/performance/using_servers.html) article to understand how the RenderingServer's functionality can be used to create "server side" representations of renderable resources.
+- Explain the role of the [`Instance`](https://github.com/godotengine/godot/blob/d569fcf207aea355ea9d0822255ad490945f5572/servers/rendering/renderer_scene_cull.h#L402) and the [`Scenario`](https://github.com/godotengine/godot/blob/d569fcf207aea355ea9d0822255ad490945f5572/servers/rendering/renderer_scene_cull.h#L327) classes in the rendering server (defined in the [render_scene_cull.h] file)
+- How is the cumulated transformation of nested nodes handled in the rendering process? Look at how the transformation of a MeshInstance3D is calculated and how it interacts with the rendering backend. Does the `Instance`'s [`tranform` property](https://github.com/godotengine/godot/blob/d569fcf207aea355ea9d0822255ad490945f5572/servers/rendering/renderer_scene_cull.h#L412) contain a cumulative transformation of the node and its parents, or is it just the local transformation of the node?
+
+

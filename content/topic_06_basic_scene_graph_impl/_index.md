@@ -138,5 +138,4 @@ Statt einer Anwendungsbezogenen Methode (`render`) gibt es eine polymorph (im Be
 
 ## Resourcen
 
-- [Beispiel-Implementierung der Szenengraph-Klassen]code
-(https://github.com/griestopf/SWDevInGames_2025_SS/tree/main/_example_code/L04_Scratch)
+- [Start-Projekt für Beispiel-Szenengraph](https://github.com/griestopf/SWDevInGames_2025_SS/tree/main/_example_code/L04_Scratch)

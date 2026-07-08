@@ -3,14 +3,13 @@
 
 #include "refcounted.h"
 
-class Mesh : public RefCounted {
+class Mesh : public RefCounted
+{
 public:
-    Mesh();
-    Mesh(std::string new_name);
-    ~Mesh();
-
-    // TODO implement mesh data such as vertices, indices, normals, etc.
+    Mesh(const std::string &new_name) : RefCounted(new_name)
+    {}
+    virtual ~Mesh()
+    {}
 };
 
-
-#endif // MESH_H
+#endif

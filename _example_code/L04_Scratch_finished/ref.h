@@ -1,55 +1,67 @@
 #ifndef REF_H
 #define REF_H
 
-#include "refcounted.h"
-
 template <typename T>
 class Ref
 {
-    T *reference;
-
 public:
-    Ref(T *p_reference = nullptr) : reference(p_reference)
+    Ref(T *p)
     {
-        if (reference)
-        {
-            reference->reference();
-        }
+        pt_to_t = p;
+        if (pt_to_t)
+            pt_to_t->_ref();
     }
 
-    Ref(const Ref &p_ref) : reference(p_ref.reference)
+    // TODO!!
+    Ref(Ref &r)
     {
-        if (reference)
-        {
-            reference->reference();
-        }
+        pt_to_t = r.pt_to_t;
+        if (pt_to_t)
+            pt_to_t->_ref();
+    }
+
+    Ref &operator = (const Ref &r)
+    {
+       pt_to_t = r.pt_to_t;
+       if (pt_to_t)
+           pt_to_t->_ref();
+       return *this;     
+    }
+
+
+    Ref()
+    {
+        pt_to_t = NULL;
     }
 
     ~Ref()
     {
-        if (reference)
-        {
-            reference->unreference();
-        }
+        if (pt_to_t)
+            pt_to_t->_unref();
     }
 
-    Ref &operator=(const Ref &p_ref)
+    Ref &operator = (T *p)
     {
-        if (this != &p_ref)
+        if (p != pt_to_t)
         {
-            if (reference)
+            if (pt_to_t)
             {
-                reference->unreference();
+                pt_to_t->_unref();
             }
-            reference = p_ref.reference;
-            if (reference)
-            {
-                reference->reference();
-            }
+            pt_to_t = p;
+            if (pt_to_t)
+                pt_to_t->_ref();
         }
         return *this;
     }
 
-    T *get() const { return reference; }
+    T *operator->()
+    {
+        return pt_to_t;
+    }
+
+private:
+    T *pt_to_t;
 };
-#endif // REF_H
+
+#endif

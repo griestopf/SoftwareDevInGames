@@ -4,6 +4,7 @@
             "type": "cppbuild",
             "label": "C/C++: cl.exe build active file",
             "command": "cl.exe",
+            // LINUX "command": "g++.exe",
             "args": [
                 "/Zi",
                 "/EHsc",

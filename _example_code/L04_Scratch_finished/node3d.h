@@ -4,26 +4,26 @@
 #include "object.h"
 #include <unordered_map>
 #include <string>
-
-
-class Visitor;
+#include "visitor.h"
 
 class Node3D : public Object
 {
 public:
     Node3D();
-    Node3D(const std::string &new_name);
+    Node3D(const std::string &new_name) : Object(new_name) {}
 
-    ~Node3D();
+    ~Node3D() {};
 
     void addChild(Node3D *child);
+
     // get a child by name
     Node3D *getChild(const std::string &child_name);
 
     // remove a child by name
     void removeChild(const std::string &child_name);
 
-    virtual void accept(Visitor *visitor);    
+    // render
+    virtual void accept(Visitor *visitor);
 
 protected:
     void visitChildren(Visitor *visitor);

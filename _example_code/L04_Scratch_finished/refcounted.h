@@ -3,22 +3,41 @@
 
 #include "object.h"
 
-// TODO: Look, if the Godot implementation of RefCounted is different from this one. Especially look, 
-// if incrementing and decrementing the reference count is done using methods like ref and unref.
-class RefCounted : public Object {
+class RefCounted : public Object
+{
 public:
-    RefCounted();
-    RefCounted(std::string new_name);
-    ~RefCounted();
+    RefCounted(const std::string &new_name) : Object(new_name)
+    {
+        counter = 0;
+    }
 
-    // Reference counting methods
-    void reference();
-    void unreference();  
+    RefCounted() : Object()
+    {
+        counter = 0;
+    }
 
-    // Get the current reference count
-    int get_reference_count() const;  
+    virtual ~RefCounted()
+    {
+
+    }
+
+    void _ref()
+    {
+        counter++;
+    }
+
+    void _unref()
+    {
+        counter--;
+        if (counter <= 0)
+        {
+            delete this;
+        }
+    }
 private:
-    int ref_count;  // Reference count
+    int counter;
 };
 
-#endif // REFCOUNTED_H
+
+
+#endif

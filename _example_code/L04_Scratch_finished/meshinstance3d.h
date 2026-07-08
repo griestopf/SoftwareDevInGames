@@ -4,21 +4,20 @@
 #include <iostream>
 
 #include "node3d.h"
-#include "ref.h"
 #include "mesh.h"
-
-class Visitor;
+#include "ref.h"
 
 class MeshInstance3D : public Node3D
 {
 public:
     MeshInstance3D();
-    MeshInstance3D(const std::string &new_name);
-    ~MeshInstance3D();
-    Ref<Mesh> getMesh();
-    void setMesh(Ref<Mesh> mesh);
+    MeshInstance3D(const std::string &new_name) : Node3D(new_name) {};
+    ~MeshInstance3D() {};
 
-    virtual void accept(Visitor *visitor); 
+    void setMesh(Ref<Mesh> new_mesh);
+    Ref<Mesh> getMesh();
+
+    virtual void accept(Visitor *visitor);
 
 private:
     Ref<Mesh> mesh;

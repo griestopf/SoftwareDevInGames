@@ -139,3 +139,6 @@ Statt einer Anwendungsbezogenen Methode (`render`) gibt es eine polymorph (im Be
 ## Resourcen
 
 - [Start-Projekt für Beispiel-Szenengraph](https://github.com/griestopf/SoftwareDevInGames/raw/refs/heads/main/_example_code/L04_Scratch/SceneGraphStartUpProj.zip)
+
+- [Beispiel-Szenengraph Implementierung mit Visitor Pattern Traversierung](https://github.com/griestopf/SoftwareDevInGames/raw/refs/heads/main/_example_code/L04_Scratch_finished/SceneGraphProjVisitor.zip)
+
